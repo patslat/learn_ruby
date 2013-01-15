@@ -17,7 +17,7 @@
 #
 #
 
-require "temperature"
+require_relative "temperature"
 
 describe Temperature do
 
@@ -98,6 +98,11 @@ describe Temperature do
   #
   describe "utility class methods" do
 
+    it "converts using ftoc and ctof" do
+      Temperature.ftoc(32).should == 0
+      Temperature.ctof(37).should be_within(0.1).of(98.6)
+    end
+    
   end
 
   # Here's another way to solve the problem!

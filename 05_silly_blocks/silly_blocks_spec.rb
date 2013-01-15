@@ -6,7 +6,7 @@
 # * loops
 #
 
-require "silly_blocks"
+require_relative "silly_blocks"
 
 describe "some silly block functions" do
 
@@ -14,7 +14,7 @@ describe "some silly block functions" do
     it "reverses the string returned by the default block" do
       result = reverser do
         "hello"
-      end
+      end   
       result.should == "olleh"
     end
 

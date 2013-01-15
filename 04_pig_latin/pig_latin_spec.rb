@@ -69,4 +69,14 @@ describe "#translate" do
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
   # * retain the punctuation from the original phrase
 
+  it "keeps word capitalization" do
+  s = translate("My name is Patrick")
+  s.should == "Ymay amenay isay Atrickpay"
+  end
+
+  it "retains punctuation from the original phrase" do
+    s = translate("an exclamation!")
+    s. should == "anay exclamationay!"
+  end
+
 end
