@@ -50,13 +50,36 @@ class RPNCalculator
 	def value
 		@stack[-1]
 	end
+
+	def tokens(str)
+		str.split.map do |chr|
+			if chr =~ /[+\-*\/]/
+				chr.to_sym
+			else
+				chr.to_i
+			end
+		end
+	end
+
+	def evaluate(str)
+		operator_tokens = [:+, :-, :*, :/]
+		eval = tokens(str)
+		eval.each do |token|
+			if operator_tokens.include?(token)
+				case token
+				when :+
+					self.plus
+				when :-
+					self.minus
+				when :*
+					self.times
+				when :/
+					self.divide
+				end
+			else
+				push(token)
+			end
+		end
+		self.value
+	end
 end
-
-calculator = RPNCalculator.new
-p calculator.push(2)
-p calculator.push(3)
-p calculator.push(4)
-p calculator.plus
-p calculator.plus
-
-p calculator.value
